@@ -19,3 +19,12 @@ def create_key(map):
                 block += '1'
         chain.append(convert_to_36(int(block, 2)))
     return ':'.join(chain)
+
+
+def create_map(map):
+    for n, layer in enumerate(map):
+        for num, place in enumerate(layer):
+            if n == 0 and num == 0:
+                map[n][num] = 4
+            else:
+                pass
