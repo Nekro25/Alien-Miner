@@ -35,8 +35,23 @@
       <height>805</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="text">
-     <string>BGI</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>pictures/BG.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="openExternalLinks">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QTabWidget" name="Game_tabwindow">
@@ -49,7 +64,28 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>20</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>false</bool>
+    </property>
+    <property name="documentMode">
+     <bool>true</bool>
+    </property>
+    <property name="tabsClosable">
+     <bool>false</bool>
+    </property>
+    <property name="movable">
+     <bool>false</bool>
+    </property>
+    <property name="tabBarAutoHide">
+     <bool>false</bool>
     </property>
     <widget class="QWidget" name="game">
      <attribute name="title">
@@ -58,14 +94,17 @@
      <widget class="QLabel" name="game_screen">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>520</width>
-        <height>520</height>
+        <x>-11</x>
+        <y>-11</y>
+        <width>541</width>
+        <height>541</height>
        </rect>
       </property>
       <property name="text">
-       <string>Game_Screen</string>
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>pictures/surface.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -73,7 +112,7 @@
      <attribute name="title">
       <string>Tab 2</string>
      </attribute>
-     <widget class="QDial" name="dial">
+     <widget class="QDial" name="size_dial">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -82,8 +121,31 @@
         <height>80</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::WheelFocus</enum>
+      </property>
+      <property name="minimum">
+       <number>2</number>
+      </property>
+      <property name="maximum">
+       <number>8</number>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>0.000000000000000</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QDial" name="dial_2">
+     <widget class="QDial" name="level_dial">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -92,8 +154,17 @@
         <height>80</height>
        </rect>
       </property>
+      <property name="minimum">
+       <number>2</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
+      </property>
      </widget>
-     <widget class="QDial" name="dial_3">
+     <widget class="QDial" name="difficulty_dial">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -101,6 +172,27 @@
         <width>80</width>
         <height>80</height>
        </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="wrapping">
+       <bool>false</bool>
+      </property>
+      <property name="notchTarget">
+       <double>5.699999999999999</double>
+      </property>
+      <property name="notchesVisible">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="sizes_lbl">
@@ -114,8 +206,15 @@
       </property>
       <property name="font">
        <font>
+        <family>MS Shell Dlg 2</family>
         <pointsize>13</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(13, 255, 0)</string>
       </property>
       <property name="text">
        <string>Длинна и ширина игрового поля</string>
@@ -135,6 +234,9 @@
         <pointsize>13</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(13, 255, 0)</string>
+      </property>
       <property name="text">
        <string>Количество этажей игрового поля</string>
       </property>
@@ -153,6 +255,9 @@
         <pointsize>13</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(13, 255, 0)</string>
+      </property>
       <property name="text">
        <string>Заполнение поля препятсвиями</string>
       </property>
@@ -170,6 +275,9 @@
        <font>
         <pointsize>13</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(13, 255, 0)</string>
       </property>
       <property name="text">
        <string>Ключ генерации</string>
@@ -199,6 +307,9 @@
         <pointsize>13</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="text">
        <string>Применить</string>
       </property>
@@ -220,7 +331,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="up_btn">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -235,10 +346,20 @@
      </font>
     </property>
     <property name="text">
-     <string>Up</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>pictures/up_arrow.png</normaloff>pictures/up_arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="left_btn">
     <property name="geometry">
      <rect>
       <x>60</x>
@@ -253,10 +374,20 @@
      </font>
     </property>
     <property name="text">
-     <string>Left</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>pictures/left_arrow.png</normaloff>pictures/left_arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="right_btn">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -271,10 +402,20 @@
      </font>
     </property>
     <property name="text">
-     <string>Right</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>pictures/right_arrow.png</normaloff>pictures/right_arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="down_btn">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -289,10 +430,20 @@
      </font>
     </property>
     <property name="text">
-     <string>Down</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>pictures/down_arrow.png</normaloff>pictures/down_arrow.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>60</width>
+      <height>60</height>
+     </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="c_btn">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -303,14 +454,15 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <family>Arial Black</family>
+      <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
      <string>C</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="d_btn">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -321,14 +473,15 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <family>Arial Black</family>
+      <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
      <string>D</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="a_btn">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -339,14 +492,15 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <family>Arial Black</family>
+      <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
      <string>A</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="b_btn">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -357,7 +511,8 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>13</pointsize>
+      <family>Arial Black</family>
+      <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
