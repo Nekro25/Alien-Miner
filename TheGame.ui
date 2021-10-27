@@ -65,11 +65,10 @@
     </property>
     <property name="styleSheet">
      <string notr="true">color:rgb(75, 226, 226);
-background-color:rgb(80, 80, 80);
 border-color:rgb(0, 0, 0)</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -114,6 +113,17 @@ border-color:rgb(0, 0, 0)</string>
       <property name="pixmap">
        <pixmap>pictures/surface.png</pixmap>
       </property>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>531</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="map_layout"/>
      </widget>
     </widget>
     <widget class="QWidget" name="settings">
