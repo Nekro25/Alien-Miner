@@ -8,6 +8,9 @@ def convert_to_36(num):
         return convert_to_36(num // 36) + ALPHABET[num % 36]
 
 
+# конвертирует 10-ричную систему счисления в 36-ричную
+
+
 def create_key(map):
     chain = []
     for lay in map:
@@ -21,10 +24,10 @@ def create_key(map):
     return ':'.join(chain)
 
 
-def create_map(map):
-    for n, layer in enumerate(map):
-        for num, place in enumerate(layer):
-            if n == 0 and num == 0:
-                map[n][num] = 4
-            else:
-                pass
+# создает ключ генерации принимая карту
+
+class Cell:
+    def __init__(self, type, up_way=False, down_way=False):
+        self.type = type
+        self.up_way = up_way
+        self.down_way = down_way
