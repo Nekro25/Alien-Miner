@@ -123,7 +123,20 @@ border-color:rgb(0, 0, 0)</string>
         <height>521</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="map_layout"/>
+      <layout class="QGridLayout" name="map_layout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="start_lbl">
+         <property name="font">
+          <font>
+           <pointsize>50</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>set settings!</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="settings">
