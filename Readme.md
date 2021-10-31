@@ -6,7 +6,7 @@
 Игра сделана в стиле аркадных автоматов и будет интересна не только новичкам, но
  и старичкам.
  ---
-![pic](pictures\Game_process.png)
+![pic](https://github.com/Nekro25/PyProject/tree/master/pictures/Game_process.png)
  ___
 ### Технологии
 
