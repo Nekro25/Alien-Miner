@@ -28,16 +28,13 @@ class Game(QMainWindow):
         self.d_btn.clicked.connect(self.drop)
 
     def set_settings(self):
-        self.player_cords = [0, 0, 0]  # (y, x, layer)
-        self.map_size = self.size_dial.value()
-        self.map_level = self.level_dial.value()
+        self.player_cords = [0, 0, 0]
         self.difficulty = self.difficulty_dial.value() * 3
-        self.create_map()
-        self.show_map(0)
-        self.shown_lbls = []
         if self.generate_key.text():
             settings.create_map_by_key(self, self.generate_key.text())
         else:
+            self.map_size = self.size_dial.value()
+            self.map_level = self.level_dial.value()
             self.create_map()
         self.generate_key.setText(settings.create_key(self.map))
         self.show_map(0)
@@ -59,8 +56,8 @@ class Game(QMainWindow):
     # создает игровую карту
 
     def show_map(self, layer):
-        for i in reversed(range(self.map_layout.count())):
-            self.map_layout.itemAt(i).widget().setParent(None)
+        for i in reversed(range(self.map_layout.count())):  # Удаляет все элементы
+            self.map_layout.itemAt(i).widget().setParent(None)  # в layout (нашел в инете)
         for num, cell in enumerate(self.map[layer]):
             lbl = QLabel(self)
             if cell.type == 'ship':
@@ -71,10 +68,23 @@ class Game(QMainWindow):
                                                                   500 // self.map_size))
             self.map_layout.addWidget(lbl, num % self.map_size,
                                       num // self.map_size % self.map_size)
+            if cell.up_way:
+                lbl.setPixmap(
+                    QPixmap('pictures/up_way.png').scaled(500 // self.map_size,
+                                                          500 // self.map_size))
+                self.map_layout.addWidget(lbl, num % self.map_size,
+                                          num // self.map_size % self.map_size)
+            if cell.down_way:
+                lbl.setPixmap(
+                    QPixmap('pictures/down_way.png').scaled(500 // self.map_size,
+                                                            500 // self.map_size))
+                self.map_layout.addWidget(lbl, num % self.map_size,
+                                          num // self.map_size % self.map_size)
         lbl.setPixmap(QPixmap('pictures/man.png').scaled(500 // self.map_size,
                                                          500 // self.map_size))
         self.map_layout.addWidget(lbl, self.player_cords[0], self.player_cords[1])
-        # функция addWidget добовляет наоборот - не (х, у), а (у, х)
+        # функция addWidget добовляет наоборот - не (х, у), а (у, х),
+        # то есть (колонна, строка)
 
     def move_up(self):
         if self.game_going:
@@ -90,8 +100,10 @@ class Game(QMainWindow):
             elif self.cheat_combo == self.cc_need:
                 self.game_going = False
                 lbl = QLabel(self)
-                lbl.setText('YOU WON')
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
                 self.map_layout.addWidget(lbl, 0, 0)
+        # во всех функциях которым привязаны кнопки действия есть повторяющаяся часть
+        # в будущем сделаю для этого отдельную функцию, а сейчас проверял работу чита
 
     def move_down(self):
         if self.game_going:
@@ -105,9 +117,11 @@ class Game(QMainWindow):
             if self.cheat_combo not in self.cc_need:
                 self.cheat_combo = 'dwn'
             elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
                 self.game_going = False
                 lbl = QLabel(self)
-                lbl.setText('YOU WON')
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
                 self.map_layout.addWidget(lbl, 0, 0)
 
     def move_left(self):
@@ -122,9 +136,11 @@ class Game(QMainWindow):
             if self.cheat_combo not in self.cc_need:
                 self.cheat_combo = 'lft'
             elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
                 self.game_going = False
                 lbl = QLabel(self)
-                lbl.setText('YOU WON')
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
                 self.map_layout.addWidget(lbl, 0, 0)
 
     def move_right(self):
@@ -139,22 +155,97 @@ class Game(QMainWindow):
             if self.cheat_combo not in self.cc_need:
                 self.cheat_combo = 'rght'
             elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
                 self.game_going = False
                 lbl = QLabel(self)
                 lbl.setText('YOU WON')
                 self.map_layout.addWidget(lbl, 0, 0)
 
     def dig(self):
-        pass
+        if self.game_going:
+            if self.player_cords[2] != self.map_level - 1:
+                self.map[self.player_cords[2]][
+                    self.player_cords[1] * self.map_size +
+                    self.player_cords[0]].down_way = True
+                self.map[self.player_cords[2] + 1][
+                    self.player_cords[1] * self.map_size +
+                    self.player_cords[0]].up_way = True
+            else:
+                self.statusBar().showMessage('You can\'t go out of the map')
+            self.show_map(self.player_cords[2])
+            self.cheat_combo += 'A'
+            if self.cheat_combo not in self.cc_need:
+                self.cheat_combo = 'A'
+            elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
+                self.game_going = False
+                lbl = QLabel(self)
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
+                self.map_layout.addWidget(lbl, 0, 0)
 
     def check(self):
-        pass
+        if self.game_going:
+            if self.player_cords[2] != self.map_level - 1:
+                if self.map[self.player_cords[2] + 1][
+                    self.player_cords[1] * self.map_size + self.player_cords[
+                        0]].type == 'lava':
+                    self.statusBar().showMessage('Be careful, under of you lava')
+                elif self.map[self.player_cords[2] + 1][
+                    self.player_cords[1] * self.map_size + self.player_cords[
+                        0]].type == 'ore':
+                    self.statusBar().showMessage('Good job, you found alien ore!')
+                else:
+                    self.statusBar().showMessage('It\'s clear, you can dig')
+            else:
+                self.statusBar().showMessage('You can\'t check under the map')
+            self.cheat_combo += 'B'
+            if self.cheat_combo not in self.cc_need:
+                self.cheat_combo = 'B'
+            elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
+                self.game_going = False
+                lbl = QLabel(self)
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
+                self.map_layout.addWidget(lbl, 0, 0)
 
     def climb(self):
-        pass
+        if self.game_going:
+            if self.player_cords[2] != 0:
+                self.player_cords[2] -= 1
+                self.show_map(self.player_cords[2])
+            else:
+                self.statusBar().showMessage('You can\'t walk on air')
+            self.cheat_combo += 'C'
+            if self.cheat_combo not in self.cc_need:
+                self.cheat_combo = 'C'
+            elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
+                self.game_going = False
+                lbl = QLabel(self)
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
+                self.map_layout.addWidget(lbl, 0, 0)
 
     def drop(self):
-        pass
+        if self.game_going:
+            if self.player_cords[2] != self.map_level - 1:
+                self.player_cords[2] += 1
+                self.show_map(self.player_cords[2])
+            else:
+                self.statusBar().showMessage('You can\'t break bedrock')
+            self.cheat_combo += 'D'
+            if self.cheat_combo not in self.cc_need:
+                self.cheat_combo = 'D'
+            elif self.cheat_combo == self.cc_need:
+                for i in reversed(range(self.map_layout.count())):
+                    self.map_layout.itemAt(i).widget().setParent(None)
+                self.game_going = False
+                lbl = QLabel(self)
+                lbl.setText('YOU WON!(You are cheater, it isn\'t interesting)')
+                self.map_layout.addWidget(lbl, 0, 0)
 
 
 def except_hook(cls, exception, traceback):

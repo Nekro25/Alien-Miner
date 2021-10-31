@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Alien Miner</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">color:rgb(152, 152, 152);
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="background">
@@ -63,12 +67,14 @@
       <height>550</height>
      </rect>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
-     <string notr="true">color:rgb(75, 226, 226);
-border-color:rgb(0, 0, 0)</string>
+     <string notr="true">color:rgb(75, 226, 226);</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -155,9 +161,9 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -191,18 +197,18 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -229,9 +235,9 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -265,18 +271,18 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -303,9 +309,9 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Button">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -339,18 +345,18 @@ border-color:rgb(0, 0, 0)</string>
         <colorrole role="Base">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
         <colorrole role="Window">
          <brush brushstyle="SolidPattern">
           <color alpha="255">
-           <red>80</red>
-           <green>80</green>
-           <blue>80</blue>
+           <red>72</red>
+           <green>72</green>
+           <blue>72</blue>
           </color>
          </brush>
         </colorrole>
@@ -565,7 +571,8 @@ background-color:rgb(0, 178, 181)</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(158, 158, 158)</string>
+       <string notr="true">background-color:rgb(130, 130, 130);
+color:rgb(0, 255, 247)</string>
       </property>
      </widget>
      <widget class="QPushButton" name="set_btn">
