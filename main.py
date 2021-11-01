@@ -29,7 +29,7 @@ class Game(QMainWindow):
 
     def set_settings(self):
         self.player_cords = [0, 0, 0]
-        self.difficulty = self.difficulty_dial.value() * 3
+        self.difficulty = self.difficulty_dial.value() * 3  # минимум - 3%, максимум - 30% заполнения препядствиями
         if self.generate_key.text():
             settings.create_map_by_key(self, self.generate_key.text())
         else:
@@ -41,14 +41,14 @@ class Game(QMainWindow):
         self.game_going = True
 
     def create_map(self):
-        self.map = [[0 for _ in range(self.map_size ** 2)] for __ in
+        self.map = [[0 for _ in range(self.map_size ** 2)] for __ in  # в квадрате т.к. поле квадратное
                     range(self.map_level)]
         for layer_num, layer in enumerate(self.map):
             for cell_num, cell in enumerate(layer):
-                if layer_num == 0 and cell_num == 0:
+                if layer_num == 0 and cell_num == 0:  # В самой первой клетке находиься корабль
                     self.map[layer_num][cell_num] = settings.Cell('ship')
                     self.map[layer_num][cell_num] = settings.Cell('ship', player=True)
-                elif randrange(100) <= self.difficulty:
+                elif randrange(100) <= self.difficulty:  # Создает клетку с лавой если randrange(100) меньше или равен % заполнения
                     self.map[layer_num][cell_num] = settings.Cell('lava')
                 else:
                     self.map[layer_num][cell_num] = settings.Cell('ground')
@@ -61,7 +61,7 @@ class Game(QMainWindow):
         for num, cell in enumerate(self.map[layer]):
             lbl = QLabel(self)
             if cell.type == 'ship':
-                lbl.setPixmap(QPixmap('pictures/ship.png').scaled(500 // self.map_size,
+                lbl.setPixmap(QPixmap('pictures/ship.png').scaled(500 // self.map_size,  # 500 размер поля в пикселях 
                                                                   500 // self.map_size))
             elif cell.type == 'lava':
                 lbl.setPixmap(QPixmap('pictures/lava.png').scaled(500 // self.map_size,
