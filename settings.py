@@ -1,7 +1,5 @@
 from random import randrange
-
-ALPHABET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
+from constants import *
 
 def convert_to_36(num):
     if num < 36:
@@ -18,7 +16,7 @@ def create_key(map):
     for lay in map:
         block = ''
         for place in lay:
-            if place.type == 'lava':
+            if place.type == LAVA:
                 block += '1'
             else:
                 block += '0'
@@ -44,20 +42,20 @@ def create_map_by_key(self, key):
         for n, c in enumerate(list(l)):  # c = cell
             if not add_2:
                 if (not ore_was) and (cnt == self.map_level - 1) and (n == lenth - 1):
-                    layer.append(Cell('ore'))
+                    layer.append(Cell(ORE))
                     continue
                 if cnt == 0 and n == 0:
-                    layer.append(Cell('ship', player=True))
+                    layer.append(Cell(SHIP, player=True))
                 elif c == '1':
-                    layer.append(Cell('lava'))
+                    layer.append(Cell(LAVA))
                     if cnt == self.map_level - 1 and not ore_was:
-                        layer.append(Cell('ore'))
+                        layer.append(Cell(ORE))
                         ore_was = True
                         add_2 = True
-                        continue
                 else:
-                    layer.append(Cell('ground'))
-            add_2 = False
+                    layer.append(Cell(GROUND))
+            else:
+                add_2 = False
         self.map.append(layer)
 
 
