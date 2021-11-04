@@ -74,7 +74,7 @@
      <string notr="true">color:rgb(75, 226, 226);</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -125,7 +125,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>543</width>
+        <width>531</width>
         <height>521</height>
        </rect>
       </property>

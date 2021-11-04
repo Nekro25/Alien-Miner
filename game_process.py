@@ -86,30 +86,33 @@ class Game(QMainWindow):
         for num, cell in enumerate(self.map[layer]):
             lbl = QLabel(self)
             if cell.type == SHIP:
-                lbl.setPixmap(QPixmap('pictures/ship.png').scaled(500 // self.map_size,
-                                                                  500 // self.map_size))
+                lbl.setPixmap(QPixmap('pictures/ship.png').scaled(490 // self.map_size,
+                                                                  490 // self.map_size))
             elif cell.type == LAVA:
-                lbl.setPixmap(QPixmap('pictures/lava.png').scaled(500 // self.map_size,
-                                                                  500 // self.map_size))
+                lbl.setPixmap(QPixmap('pictures/lava.png').scaled(490 // self.map_size,
+                                                                  490 // self.map_size))
+            elif cell.type == GROUND:
+                lbl.setPixmap(QPixmap('pictures/ground.png').scaled(490 // self.map_size,
+                                                                    490 // self.map_size))
             self.map_layout.addWidget(lbl, num % self.map_size,
                                       num // self.map_size % self.map_size)
             if cell.up_way:
                 lbl = QLabel(self)
                 lbl.setPixmap(
-                    QPixmap('pictures/up_way.png').scaled(500 // self.map_size,
-                                                          500 // self.map_size))
+                    QPixmap('pictures/up_way.png').scaled(490 // self.map_size,
+                                                          490 // self.map_size))
                 self.map_layout.addWidget(lbl, num % self.map_size,
                                           num // self.map_size % self.map_size)
             if cell.down_way:
                 lbl = QLabel(self)
                 lbl.setPixmap(
-                    QPixmap('pictures/down_way.png').scaled(500 // self.map_size,
-                                                            500 // self.map_size))
+                    QPixmap('pictures/down_way.png').scaled(490 // self.map_size,
+                                                            490 // self.map_size))
                 self.map_layout.addWidget(lbl, num % self.map_size,
                                           num // self.map_size % self.map_size)
         lbl = QLabel(self)
-        lbl.setPixmap(QPixmap('pictures/man.png').scaled(500 // self.map_size,
-                                                         500 // self.map_size))
+        lbl.setPixmap(QPixmap('pictures/man.png').scaled(490 // self.map_size,
+                                                         480 // self.map_size))
         self.map_layout.addWidget(lbl, self.player_cords[0], self.player_cords[1])
         # функция addWidget добовляет наоборот - не (х, у), а (у, х),
         # то есть (колонна, строка)
@@ -205,8 +208,8 @@ class Game(QMainWindow):
     def climb(self):
         if self.game_going:
             if self.player_cords[2] != 0 and self.map[self.player_cords[2]][
-                        self.player_cords[1] * self.map_size +
-                        self.player_cords[0]].up_way == True:
+                self.player_cords[1] * self.map_size +
+                self.player_cords[0]].up_way == True:
                 self.player_cords[2] -= 1
                 self.show_map(self.player_cords[2])
                 self.statusBar().clearMessage()
