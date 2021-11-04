@@ -3,6 +3,7 @@ import sys
 import settings
 from constants import *
 from DataBase import *
+from keyboad import *
 
 from time import time
 from random import randrange
@@ -28,9 +29,14 @@ class Game(QMainWindow):
         self.b_btn.clicked.connect(self.check)
         self.c_btn.clicked.connect(self.climb)
         self.d_btn.clicked.connect(self.drop)
+        self.keyboard_btn.clicked.connect(self.kb_call)
         self.Game_tabwindow.setCurrentIndex(1)
 
         show_all(self)
+
+    def kb_call(self):
+        self.kb_widget = KboardForm(self)
+        self.kb_widget.show()
 
     def set_settings(self):
         self.start_time = time()
@@ -208,8 +214,8 @@ class Game(QMainWindow):
     def climb(self):
         if self.game_going:
             if self.player_cords[2] != 0 and self.map[self.player_cords[2]][
-                self.player_cords[1] * self.map_size +
-                self.player_cords[0]].up_way == True:
+                self.player_cords[1] * self.map_size + self.player_cords[
+                    0]].up_way == True:
                 self.player_cords[2] -= 1
                 self.show_map(self.player_cords[2])
                 self.statusBar().clearMessage()
