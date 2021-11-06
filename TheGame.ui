@@ -73,6 +73,12 @@
     <property name="styleSheet">
      <string notr="true">color:rgb(75, 226, 226);</string>
     </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
     <property name="currentIndex">
      <number>1</number>
     </property>
@@ -81,6 +87,9 @@
       <width>20</width>
       <height>20</height>
      </size>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::ElideNone</enum>
     </property>
     <property name="usesScrollButtons">
      <bool>false</bool>
@@ -92,7 +101,7 @@
      <bool>false</bool>
     </property>
     <property name="movable">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="tabBarAutoHide">
      <bool>false</bool>

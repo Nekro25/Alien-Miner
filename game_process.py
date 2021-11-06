@@ -8,8 +8,9 @@ from keyboad import *
 from time import time
 from random import randrange
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QFont
-from PyQt5.QtWidgets import QMainWindow, QLabel
+from PyQt5.QtWidgets import QMainWindow, QLabel, QTabWidget
 
 
 class Game(QMainWindow):
@@ -32,7 +33,28 @@ class Game(QMainWindow):
         self.keyboard_btn.clicked.connect(self.kb_call)
         self.Game_tabwindow.setCurrentIndex(1)
 
+        user_kb(self)
+
         show_all(self)
+
+    def keyPressEvent(self, event):
+        if event.key() == self.up_kb:
+            self.move_up()
+        if event.key() == self.down_kb:
+            self.move_down()
+        if event.key() == self.left_kb:
+            self.move_left()
+        if event.key() == self.right_kb:
+            self.move_right()
+        if event.key() == self.A_kb:
+            self.dig()
+        if event.key() == self.B_kb:
+            self.check()
+        if event.key() == self.C_kb:
+            self.climb()
+        if event.key() == self.D_kb:
+            self.drop()
+
 
     def kb_call(self):
         self.kb_widget = KboardForm(self)

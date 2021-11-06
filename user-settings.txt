@@ -1,0 +1,10 @@
+name:none
+up:87
+down:83
+left:65
+right:68
+A:70
+B:82
+C:81
+D:69
+w:a:s:d:f:r:q:e
