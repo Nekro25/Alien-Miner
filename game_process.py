@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import QMainWindow, QLabel, QTabWidget
 class Game(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('TheGame.ui', self)
+        uic.loadUi('UI/TheGame.ui', self)
 
         self.cheat_combo = ''
         self.game_going = False

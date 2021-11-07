@@ -46,7 +46,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>pictures/BG.png</pixmap>
+     <pixmap>../pictures/BG.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -80,7 +80,7 @@
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -126,7 +126,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>pictures/surface.png</pixmap>
+       <pixmap>../pictures/surface.png</pixmap>
       </property>
      </widget>
      <widget class="QWidget" name="gridLayoutWidget">
@@ -853,7 +853,7 @@ background-color:rgb(80, 80, 80)</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>pictures/up_arrow.png</normaloff>pictures/up_arrow.png</iconset>
+      <normaloff>../pictures/up_arrow.png</normaloff>../pictures/up_arrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -881,7 +881,7 @@ background-color:rgb(80, 80, 80)</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>pictures/left_arrow.png</normaloff>pictures/left_arrow.png</iconset>
+      <normaloff>../pictures/left_arrow.png</normaloff>../pictures/left_arrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -909,7 +909,7 @@ background-color:rgb(80, 80, 80)</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>pictures/right_arrow.png</normaloff>pictures/right_arrow.png</iconset>
+      <normaloff>../pictures/right_arrow.png</normaloff>../pictures/right_arrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -937,7 +937,7 @@ background-color:rgb(80, 80, 80)</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>pictures/down_arrow.png</normaloff>pictures/down_arrow.png</iconset>
+      <normaloff>../pictures/down_arrow.png</normaloff>../pictures/down_arrow.png</iconset>
     </property>
     <property name="iconSize">
      <size>

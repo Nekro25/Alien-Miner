@@ -1,6 +1,7 @@
 from random import randrange
 from constants import *
 
+
 def convert_to_36(num):
     if num < 36:
         return ALPHABET[num]
@@ -57,7 +58,6 @@ def create_map_by_key(self, key):
             else:
                 add_2 = False
         self.map.append(layer)
-
 
 
 class Cell:

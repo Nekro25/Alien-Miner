@@ -40,7 +40,7 @@ class KboardForm(QWidget):
     def __init__(self, main):
         super().__init__()
         self.main = main
-        uic.loadUi('Keyboard_settings.ui', self)
+        uic.loadUi('UI/Keyboard_settings.ui', self)
 
         self.user_data = main.us_data
 

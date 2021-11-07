@@ -54,7 +54,7 @@ class Winning(QWidget):
     def __init__(self, main, steps, time):
         super().__init__()
         self.main = main
-        uic.loadUi('WinForm.ui', self)
+        uic.loadUi('UI/WinForm.ui', self)
 
         self.steps_lbl.setText(str(steps))
         self.time_lbl.setText(f'{str(time)} sec')
