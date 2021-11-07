@@ -1,10 +1,7 @@
 import sys
 
 from game_process import *
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel
-
-
-
+from PyQt5.QtWidgets import QApplication
 
 
 def except_hook(cls, exception, traceback):

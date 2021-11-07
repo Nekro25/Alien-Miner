@@ -80,7 +80,7 @@
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <property name="iconSize">
      <size>
@@ -778,7 +778,7 @@ background-color:rgb(80, 80, 80)</string>
      <attribute name="title">
       <string>Records</string>
      </attribute>
-     <widget class="QTableView" name="records_table">
+     <widget class="QTableWidget" name="records_table">
       <property name="geometry">
        <rect>
         <x>8</x>
@@ -790,6 +790,47 @@ background-color:rgb(80, 80, 80)</string>
       <property name="styleSheet">
        <string notr="true">background-color:rgb(158, 158, 158)</string>
       </property>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
+      </property>
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::SolidLine</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="columnCount">
+       <number>4</number>
+      </property>
+      <attribute name="horizontalHeaderHighlightSections">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Steps</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>time (sec)</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>key</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>

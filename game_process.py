@@ -55,7 +55,6 @@ class Game(QMainWindow):
         if event.key() == self.D_kb:
             self.drop()
 
-
     def kb_call(self):
         self.kb_widget = KboardForm(self)
         self.kb_widget.show()
@@ -77,9 +76,11 @@ class Game(QMainWindow):
             self.map_level = self.level_dial.value()
             self.create_map()
         if correct_key:
-            self.generate_key.setText(settings.create_key(self.map))
+            self.key = settings.create_key(self.map)
+            self.generate_key.setText(self.key)
             self.show_map(0)
             self.game_going = True
+            self.steps = 0
             self.Game_tabwindow.setCurrentIndex(0)
 
     def create_map(self):
@@ -156,6 +157,7 @@ class Game(QMainWindow):
             self.cheating(UP)
             self.lava_burn()
             self.return_with_ore()
+            self.steps += 1
 
     def move_down(self):
         if self.game_going:
@@ -168,6 +170,7 @@ class Game(QMainWindow):
             self.cheating(DOWN)
             self.lava_burn()
             self.return_with_ore()
+            self.steps += 1
 
     def move_left(self):
         if self.game_going:
@@ -180,6 +183,7 @@ class Game(QMainWindow):
             self.cheating(LEFT)
             self.lava_burn()
             self.return_with_ore()
+            self.steps += 1
 
     def move_right(self):
         if self.game_going:
@@ -192,6 +196,7 @@ class Game(QMainWindow):
             self.cheating(RIGHT)
             self.lava_burn()
             self.return_with_ore()
+            self.steps += 1
 
     def dig(self):
         if self.game_going:
@@ -215,6 +220,7 @@ class Game(QMainWindow):
                 self.statusBar().showMessage('You can\'t break bedrock')
             self.show_map(self.player_cords[2])
             self.cheating(A)
+            self.steps += 1
 
     def check(self):
         if self.game_going:
@@ -232,6 +238,7 @@ class Game(QMainWindow):
             else:
                 self.statusBar().showMessage('There are no alien ores')
             self.cheating(B)
+            self.steps += 1
 
     def climb(self):
         if self.game_going:
@@ -246,6 +253,7 @@ class Game(QMainWindow):
             self.cheating(C)
             self.lava_burn()
             self.return_with_ore()
+            self.steps += 1
 
     def drop(self):
         if self.game_going:
@@ -260,6 +268,7 @@ class Game(QMainWindow):
                 self.statusBar().showMessage('You can\'t go out of the map')
             self.cheating(D)
             self.lava_burn()
+            self.steps += 1
 
     def cheating(self, btn):
         self.cheat_combo += btn
@@ -268,9 +277,9 @@ class Game(QMainWindow):
         elif self.cheat_combo == CHEAT_COMBO:
             self.game_ending('YOU WON!\n(You are cheater, it isn\'t interesting)')
 
-    def game_ending(self, message):
+    def game_ending(self, message, win=False):
         self.end_time = time()
-        self.spent_time = self.end_time - self.start_time
+        self.spent_time = int(self.end_time - self.start_time)
         for i in reversed(range(self.map_layout.count())):
             self.map_layout.itemAt(i).widget().setParent(None)
         self.game_going = False
@@ -278,6 +287,9 @@ class Game(QMainWindow):
         lbl.setText(message)
         lbl.setFont(QFont('Arial Black', 15))
         self.map_layout.addWidget(lbl, 0, 0)
+        if win:
+            self.winform = Winning(self, self.steps, self.spent_time)
+            self.winform.show()
 
     def lava_burn(self):
         if self.map[self.player_cords[2]][
@@ -287,7 +299,7 @@ class Game(QMainWindow):
 
     def return_with_ore(self):
         if self.player_cords == [0, 0, 0] and self.got_ore:
-            self.game_ending('Awesome! You won!')
+            self.game_ending('Awesome! You won!', True)
 
 
 def except_hook(cls, exception, traceback):
